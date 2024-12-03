@@ -1,236 +1,38 @@
 [
     {
-        "initial_wait": "x0",
-        "tasks": [
-            {
-                "id": "vacuum^0",
-                "vars": {
-                    "role": "A",
-                    "x": 2,
-                    "y": 1
-                }
-            },
-            {
-                "id": "send_signal|vacuum^0",
-                "vars": {}
-            }
-        ]
-    },
-    {
-        "initial_wait": "mop^0",
-        "tasks": [
-            {
-                "id": "polish^0",
-                "vars": {
-                    "role": "A",
-                    "x": 2,
-                    "y": 1
-                }
-            },
-            {
-                "id": "send_signal|polish^0",
-                "vars": {}
-            }
-        ]
-    },
-    {
-        "initial_wait": "x0",
-        "tasks": [
-            {
-                "id": "vacuum^1",
-                "vars": {
-                    "role": "A",
-                    "x": 3,
-                    "y": 5
-                }
-            },
-            {
-                "id": "send_signal|vacuum^1",
-                "vars": {}
-            }
-        ]
-    },
-    {
-        "initial_wait": "mop^1",
-        "tasks": [
-            {
-                "id": "polish^1",
-                "vars": {
-                    "role": "A",
-                    "x": 3,
-                    "y": 5
-                }
-            },
-            {
-                "id": "send_signal|polish^1",
-                "vars": {}
-            }
-        ]
-    },
-    {
-        "initial_wait": "x0",
-        "tasks": [
-            {
-                "id": "vacuum^2",
-                "vars": {
-                    "role": "A",
-                    "x": 3,
-                    "y": 7
-                }
-            },
-            {
-                "id": "send_signal|vacuum^2",
-                "vars": {}
-            }
-        ]
-    },
-    {
-        "initial_wait": "mop^2",
-        "tasks": [
-            {
-                "id": "polish^2",
-                "vars": {
-                    "role": "A",
-                    "x": 3,
-                    "y": 7
-                }
-            },
-            {
-                "id": "send_signal|polish^2",
-                "vars": {}
-            }
-        ]
-    },
-    {
-        "initial_wait": "polish^0&polish^1&polish^2",
-        "tasks": [
-            {
-                "id": "x4",
-                "vars": {
-                    "role": "B"
-                }
-            },
-            {
-                "id": "send_signal|x4",
-                "vars": {}
-            }
-        ]
-    },
-    {
-        "initial_wait": "polish^0&polish^1&polish^2",
-        "tasks": [
-            {
-                "id": "x5",
-                "vars": {
-                    "role": "B"
-                }
-            },
-            {
-                "id": "send_signal|x5",
-                "vars": {}
-            }
-        ]
-    },
-    {
         "initial_wait": "SYSTEM_START",
         "tasks": [
             {
-                "id": "x0",
+                "id": "mop",
                 "vars": {
-                    "x": 0,
-                    "y": 0,
-                    "role": "C"
+                    "door": {
+                        "x": 10.0,
+                        "y": 10.0
+                    },
+                    "size": 1
                 }
             },
             {
-                "id": "send_signal|x0",
-                "vars": {}
-            },
-            {
-                "id": "wait_until|x4&x5",
-                "vars": {}
-            },
-            {
-                "id": "remove_signal",
-                "vars": {
-                    "xrem": 0,
-                    "yrem": 0,
-                    "roles": "C"
-                }
-            }
-        ]
-    },
-    {
-        "initial_wait": "vacuum^0",
-        "tasks": [
-            {
-                "id": "clean_mops^0",
-                "vars": {
-                    "role": "B",
-                    "x": 1,
-                    "y": 1
-                }
-            },
-            {
-                "id": "mop^0",
-                "vars": {
-                    "role": "B",
-                    "x": 22,
-                    "y": 22
-                }
-            },
-            {
-                "id": "send_signal|mop^0",
+                "id": "send_signal|mop",
                 "vars": {}
             }
         ]
     },
     {
-        "initial_wait": "vacuum^1",
+        "initial_wait": "mop",
         "tasks": [
             {
-                "id": "clean_mops^1",
+                "id": "vacuum",
                 "vars": {
-                    "role": "B",
-                    "x": 2,
-                    "y": 2
+                    "door": {
+                        "x": 10.0,
+                        "y": 10.0
+                    },
+                    "size": 2
                 }
             },
             {
-                "id": "mop^1",
-                "vars": {
-                    "role": "B",
-                    "x": 33,
-                    "y": 33
-                }
-            },
-            {
-                "id": "send_signal|mop^1",
-                "vars": {}
-            }
-        ]
-    },
-    {
-        "initial_wait": "vacuum^2",
-        "tasks": [
-            {
-                "id": "clean_mops^2",
-                "vars": {
-                    "role": "B",
-                    "x": 3,
-                    "y": 3
-                }
-            },
-            {
-                "id": "mop^2",
-                "vars": {
-                    "role": "B",
-                    "x": 44,
-                    "y": 44
-                }
-            },
-            {
-                "id": "send_signal|mop^2",
+                "id": "send_signal|vacuum",
                 "vars": {}
             }
         ]
