@@ -2,6 +2,7 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
 from .skills import SkillManager
+from threading import Event
 import json
 import time
 from multi3_interfaces.srv import Fragment
@@ -64,8 +65,13 @@ class FragmentExecutor(Node):
             if sep > -1: # if it a wait or send, augment the call with the target task(s)
                 t["vars"]["target"] = t["id"][sep+1:]
                 t["id"] = t["id"][:sep]
-            sk = self.sk_map[t["id"]](self)
-            failure |= sk.exec(t["vars"])
+            
+            wait_for_skill = Event()
+            sk = self.sk_map[t["id"]](self, t["vars"],wait_for_skill)
+            sk.exec()
+            wait_for_skill.wait()
+            failure |= sk.success
+
         response.execution_code = 0 if not failure else 1
         self.busy = False
         return response
